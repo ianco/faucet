@@ -66,8 +66,20 @@ After the deployment you should see /www/current dir pointing to /www/releases/1
 
 # Configuration
 
+First:
+
+1. sudo apt-get install ruby-dev
+2. sudo gem install bcrypt -v '3.1.10'
+3. bundle install
+4. sudo apt-get install nodejs
+
+Then ...
+
 1. Generate a new secret string via `rake secret` command and replace production entry in config/secrets.yml
 2. Edit faucet.yml, put values relevant to your setup
+   Edit database.yml
+   create database(s)
+   rake db:migrate RAILS_ENV=development
 3. Try to start RoR via `rails s` command, if no errors arise, go to step #4
 4. Configure and launch nginx (find config example in config/deploy/nginx.conf)
 5. Test if http://yoursite.domain loads and you can see web wallet's create account page
